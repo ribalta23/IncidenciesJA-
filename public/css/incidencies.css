@@ -41,6 +41,7 @@
     cursor: pointer;
     padding: 5px 10px;
 }
+
 .container_incidencies {
     width: 100%;
 }
@@ -73,14 +74,13 @@
 }
 
 .p_baixa {
-    background: green;
+    background: var(--color-baixes);
 }
 .p_moderada {
-    background: yellow;
+    background: var(--color-moderades);
 }
-
 .p_alta {
-    background: red;
+    background: var(--color-altes);
 }
 
 .dreta p{
@@ -89,4 +89,9 @@
 
 .dreta {
     padding: 5px;
+}
+
+.no_incidencies {
+    margin-top: 20px;
+    color: var(--color-primary);
 }

@@ -31,7 +31,7 @@
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
-            <p>No hi ha incidències disponibles.</p>
+            <p class="no_incidencies">No hi ha incidències disponibles.</p>
         <?php endif; ?>
     </div>
 </div>
