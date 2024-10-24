@@ -6,10 +6,10 @@
     $tipus = $controller->obtenirTipus();
 ?>
 
-<div class="contenedor_usuaris">
+<div class="contenedor_afegirusuaris">
     <div class="menu_top">
         <div>
-            <a class="btn_tornar" href="../public/index.php?action=dashboard"><i class="fa-solid fa-angle-left"></i></a>
+            <a class="btn_tornar" href="../public/index.php?action=mostrarUsuaris"><i class="fa-solid fa-angle-left"></i></a>
             <h2>Afegir usuari</h2>
         </div>
     </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="formU">
-                <label for="rol">Rol</label>
+            <label for="rol">Rol</label>
                 <select name="rol" id="rol" required>
                     <?php if (isset($roles)): ?>
                         <?php foreach ($roles as $rol): ?>
@@ -47,6 +47,7 @@
                     <?php endif; ?>
                 </select>
             </div>
+
             <div class="formU">
                 <label for="tipus">Tipus</label>
                 <select name="tipus" id="tipus" required>
@@ -57,10 +58,21 @@
                     <?php endif; ?>
                 </select>
             </div>
+            
+                    
             <div class="formU">
-                <label for="imatge">Imatge</label>
-                <input type="file" name="imatge" id="imatge" required>
+                
+                <div class="image-upload-container">
+                    <img id="preview" src="#" alt="Previsualización de la imagen" style="display: none;">
+                <div class="bttn_img">
+                    <label for="imatge" class="upload-label">Afegir imatge</label>
+                    <input type="file" name="imatge" id="imatge" required onchange="previewImage(event)">
+                </div>
+                   
+                </div>
             </div>
+
+    
             <div class="bttn_afegir">
                 <button type="submit">Afegir Usuari</button>
             </div>
@@ -71,6 +83,21 @@
 </div>
 
 <script>
+function previewImage(event) {
+    const input = event.target;
+    const preview = document.getElementById('preview');
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+    };
+
+    if (input.files && input.files[0]) {
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 document.getElementById('togglePassword').addEventListener('click', function (e) {
     const passwordInput = document.getElementById('password');
     const icon = this.querySelector('i');

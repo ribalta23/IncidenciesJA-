@@ -35,17 +35,18 @@ class GestorUsuarisController{
             $imatge_tmp = $_FILES['imatge']['tmp_name'];
             $password = $_POST['password'];
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
-                
+            $tipus_id = $_POST['tipus'];
+
+            // Mover la imagen subida a la carpeta de destino
             move_uploaded_file($imatge_tmp, '../public/assets/profile/' . $imatge);
-    
-            
-            include_once '../models/GestorUsuaris.php';
-            $model = new GestorUsuaris();
-            $model->insertarUsuari($nom, $cognoms, $email, $rol, $imatge, $password_hash);
-    
-            
-            header('Location: ../public/index.php?action=mostrarUsuaris');
-            exit();
+
+            // Llamar al modelo para insertar el usuario
+            if ($this->model->insertarUsuari($nom, $cognoms, $email, $rol, $imatge, $password_hash, $tipus_id)) {
+                header('Location: ../public/index.php?action=mostrarUsuaris');
+                exit();
+            } else {
+                echo "<script>alert('Error al crear el usuario.');</script>";
+            }
         }
     }
     public function obtenirRol() {
