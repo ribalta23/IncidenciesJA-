@@ -1,34 +1,37 @@
-<div class="menu_incidencies">
-    <div class="menu_incidencies_legend">
-        <h2>Incidencies</h2>
+<?php
+    include_once '../controllers/IncidenciaController.php';
+    $controller = new IncidenciaController();
+    $incidencies = $controller->obtenir_totes();
+?>
+<div class="contenedor_incidencies">
+    <div class="menu_top">
+        <div>
+            <a class="btn_tornar" href="../public/index.php?action=dashboard"><i class="fa-solid fa-angle-left"></i></a>
+            <h2>Incidencies</h2>
+        </div>
+        <div>
+            <button>Filtres <i class="fa-solid fa-chevron-down"></i></button>
+            <a class="btn_afegir" href=""><i class="fa-solid fa-plus"></i></a>
+        </div>
     </div>
-    <!-- <div class="select-container">
-        <select name="filtre_estat" id="filtre_estat" onchange="filtrar()">
-            <option value="" selected>Filtrar per estat</option>
-            <option value="">Totes</option>
-            <option value="pendent">Pendents</option>
-            <option value="enproces">En Procés</option>
-            <option value="resolta">Resolta</option>
-        </select>
+    <div class="container_incidencies">
+        <?php if ($incidencies && $incidencies->num_rows > 0) : ?>
+            <?php while ($incidencia = $incidencies->fetch_assoc()) : ?>
+                <div class="incidencia">
+                    <div class="esquerra">
+                        <div class="prioritat p_<?= $incidencia['prioritat'] ?>"><?= $incidencia['prioritat'] ?></div>
+                        <p><?= $controller->contadorTasques($incidencia['id_incidencia'])?></p>
+                    </div>
+                    <div class="dreta">
+                        <p><?= $incidencia['tipus_incidencia']?></p>
+                        <h3><?= $incidencia['titol']?></h3>
+                        <p><?= $incidencia['data_creacio']?></p>
+                        <p><?= $incidencia['nom_usuari_supervisor']?></p>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No hi ha incidències disponibles.</p>
+        <?php endif; ?>
     </div>
-    <div>
-        <button type="button" class="add_incidencia" id="afegir_incidencia">
-            <span class="add_incidencia_button__text">Afegir</span>
-            <span class="add_incidencia_button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
-        </button>
-    </div> -->
 </div>
-<?php include '../components/incidencies.php'; ?>
-<?php include '../components/afegirincidencies.php'; ?>
-<?php include '../components/veureincidencia.php'; ?>
-
-<script>
-    function filtrar() {
-        var estat = document.getElementById('filtre_estat').value;
-        if (estat != '') {
-            window.location.href = window.location.pathname + '?estat=' + estat;
-        } else {
-            window.location.href = window.location.pathname;
-        }
-    }
-</script>
