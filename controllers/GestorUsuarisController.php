@@ -1,5 +1,10 @@
 <?php
-session_start();
+//if por si no a iniciado el session
+if(!isset($_SESSION)){
+    session_start();
+}
+
+
 include_once '../config/database.php';
 include_once '../models/GestorUsuaris.php';
 

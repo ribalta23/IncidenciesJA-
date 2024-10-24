@@ -39,7 +39,7 @@
 
             <div class="desplegable_options">
                 <div class="desplegable_options_menu">
-                    <a href=""><i class="fa-solid fa-users"></i><span>Gestio d'usuaris</span></a>
+                    <a href="../public/index.php?action=mostrarUsuaris"><i class="fa-solid fa-users"></i><span>Gestio d'usuaris</span></a>
                     <i class="fa-solid fa-angle-down" id="click_desplegable_gestiousers"></i>
                 </div>
                 <div class="desplegable_options_content" id="desplegable_gestiousers">

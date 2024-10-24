@@ -30,10 +30,18 @@ switch ($action) {
         } else {
             $action = 'incidencies';
         }
+        break;
     case 'mostrarUsuaris':
-        $title = "GestioUsuaris";
-        $content = "../views/gestiousuaris.php";
-
-        
+        if($_SESSION['usuari']['rol'] == 'administrador'){
+            $title = "GestioUsuaris";
+            $content = "../views/gestiousuaris.php";
+            $styles = [
+                "../public/css/gestionarusuaris.css"
+            ];
+            include '../views/layout.php';
+        } else {
+            $action = 'incidencies';
+        }
+        break;
 }
 ?>

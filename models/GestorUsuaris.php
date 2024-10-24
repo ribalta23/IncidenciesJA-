@@ -9,9 +9,9 @@ class GestorUsuaris {
     }
 
     public function mostrarUsuaris() {
-        $query = "SELECT u.*, ti.nom AS nom_tipus_incidencia, ti.id AS id_tipus_incidencia 
+        $query = "SELECT u.*, ti.nom, ti.id_tipus_incidencia
                   FROM usuaris u 
-                  LEFT JOIN tipus_incidencia ti ON u.id_sector = ti.id";
+                  LEFT JOIN tipus_incidencia ti ON u.id_sector = ti.id_tipus_incidencia";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
