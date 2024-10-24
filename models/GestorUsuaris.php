@@ -23,4 +23,34 @@ class GestorUsuaris {
 
         return $usuaris;
     }
+
+    public function insertarUsuari($nom, $cognoms, $email, $rol, $imatge, $password_hash) {
+        $stmt = $this->conn->prepare("INSERT INTO usuaris (nom, cognoms, email, rol, imatge, password) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $nom, $cognoms, $email, $rol, $imatge, $password_hash);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function obtenirRol() {
+        $result = $this->conn->query("SHOW COLUMNS FROM usuaris LIKE 'rol'");
+        $row = $result->fetch_assoc();
+        $enum = $row['Type'];
+        preg_match("/^enum\((.*)\)$/", $enum, $matches);
+        $enum = str_getcsv($matches[1], ',', "'");
+        $enum = array_filter($enum, function($value) { return !empty($value); }); // Filtrar valores vacíos
+        return $enum;
+    }
+    public function obtenirTipus() {
+        $result = $this->conn->query("SELECT id_tipus_incidencia, nom FROM tipus_incidencia");
+        $tipus = array();
+        while ($row = $result->fetch_assoc()) {
+            $tipus[] = $row;
+        }
+        return $tipus;
+    }
+    
 }
