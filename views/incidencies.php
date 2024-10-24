@@ -11,7 +11,7 @@
         </div>
         <div>
             <button>Filtres <i class="fa-solid fa-chevron-down"></i></button>
-            <a class="btn_afegir" href=""><i class="fa-solid fa-plus"></i></a>
+            <a class="btn_afegir" href="../public/index.php?action=crearIncidencia"><i class="fa-solid fa-plus"></i></a>
         </div>
     </div>
     <div class="container_incidencies">
