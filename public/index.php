@@ -30,5 +30,10 @@ switch ($action) {
         } else {
             $action = 'incidencies';
         }
+    case 'mostrarUsuaris':
+        $title = "GestioUsuaris";
+        $content = "../views/gestiousuaris.php";
+
+        
 }
 ?>
