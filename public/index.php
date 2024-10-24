@@ -33,7 +33,7 @@ switch ($action) {
         break;
     case 'mostrarUsuaris':
         if($_SESSION['usuari']['rol'] == 'administrador'){
-            $title = "GestioUsuaris";
+            $title = "Gestio usuaris";
             $content = "../views/gestiousuaris.php";
             $styles = [
                 "../public/css/gestionarusuaris.css"
@@ -43,5 +43,12 @@ switch ($action) {
             $action = 'incidencies';
         }
         break;
+    case 'crearIncidencia':
+        $title = "Crear incidencia";
+        $content = "../views/crearincidencia.php";
+        $styles = [
+            "../public/css/incidencies.css"
+        ];
+        include '../views/layout.php';
 }
 ?>

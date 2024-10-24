@@ -26,7 +26,7 @@
 
             <div class="desplegable_options">
                 <div class="desplegable_options_menu">
-                    <a href=""><i class="fa-solid fa-triangle-exclamation"></i><span>Incidencies</span></a>
+                    <a href="../public/index.php?action=incidencies"><i class="fa-solid fa-triangle-exclamation"></i><span>Incidencies</span></a>
                     <i class="fa-solid fa-angle-down" id="click_desplegable_incidencies"></i>
                 </div>
                 <div class="desplegable_options_content" id="desplegable_incidencies">

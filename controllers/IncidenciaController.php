@@ -97,7 +97,7 @@ if (isset($_REQUEST['action'])) {
 
     switch ($_REQUEST['action']) {
         case 'crear':
-            $controller->crear();
+            $controller->obrirCrear();
             break;
         case 'actualitzar':
             $controller->actualitzar();
