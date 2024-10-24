@@ -69,6 +69,10 @@ class IncidenciaController {
         return $this->incidencia->obtenir_totes();
     }
 
+    public function contadorTasques($count){
+        return $this->incidencia->contadorTasques($count);
+    }
+
     public function obtenir_tipus_incidencia() {
         $query = "SELECT * FROM tipus_incidencia";
         return $this->conn->query($query);

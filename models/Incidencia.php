@@ -35,6 +35,18 @@ class Incidencia {
         return $result;
     }
 
+    public function contadorTasques(&$count) {
+        $query = "SELECT COUNT(*) FROM tasques WHERE id_incidencia = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $this->id_incidencia);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        $stmt->close();
+        return $count;
+    }
+    
+
     public function actualitzar() {
         $query = "UPDATE " . $this->table . " SET titol = ?, descripcio = ?, id_tipus_incidencia = ?, prioritat = ?, estat = ?  WHERE id_incidencia = ?";
         $stmt = $this->conn->prepare($query);
