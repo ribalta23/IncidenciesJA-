@@ -100,26 +100,115 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ocupa el mismo ancho que el contenedor del usuario */
-    position: relative; /* Necesario para posicionar la lupa dentro del input */
+    width: 100%; 
+    position: relative; 
     margin: 10px 0;
 }
 
 .input-buscador {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 8px 10px 8px 40px; /* Espacio para la lupa a la izquierda */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-    border: 2px solid black; /* Contorno más negro */
-    border-radius: 4px; /* Bordes redondeados */
+    width: 100%;
+    padding: 8px 10px 8px 40px;
+    box-sizing: border-box; 
+    border: 2px solid black; 
+    border-radius: 4px; 
 }
 
 .btn-lupa {
     position: absolute;
-    left: 10px; /* Posiciona la lupa a la izquierda dentro del input */
+    left: 10px; 
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    color: var(--color-tertiary); /* Ajusta el color de la lupa */
-    font-size: 16px; /* Ajusta el tamaño de la lupa */
+    color: var(--color-tertiary); 
+    font-size: 16px;
+}
+.contenedor_usuaris {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/*afegir usuari*/
+
+.menu_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor_formU {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0;
+    margin-left: 50px;
+}
+
+.formU {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se dispongan en una columna */
+    margin-bottom: 15px;
+}
+
+.formU label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    
+}
+
+.formU input,
+.formU select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+    
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px; 
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 18px;
+    color: #333;
+}
+.bttn_afegir {
+    background: var(--color-primary);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
 }
