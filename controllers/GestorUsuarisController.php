@@ -16,10 +16,13 @@ class GestorUsuarisController{
         $this->conn = $database->connect();
     }
 
-    public function mostrarUsuaris(){
-        $usuari = new GestorUsuaris($this->conn);
-        $usuaris = $usuari->mostrarUsuaris();
-        return $usuaris;
+    public function mostrarUsuaris() {
+        $query = "SELECT * FROM usuaris";
+        $result = $this->conn->query($query);
+        if ($result === false) {
+            die("Query failed: " . $this->conn->error);
+        }
+        return $result;
     }
 
 

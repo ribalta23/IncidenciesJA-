@@ -1,43 +1,125 @@
-.menu_top {
+.contenedor_usuaris {
     display: flex;
-    align-items: center;  
-    flex-direction: row;  
-    flex-wrap: nowrap;    
-    justify-content: space-between;  
+    align-items: center;
+    flex-direction: column;
     margin: 0 10px;
-    margin-top: 50px;
-    color: black;
-    height: 60px;
-    
 }
 
-.menu_top_left, .menu_top_right {
+.menu_top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.menu_top div {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-direction: row;  
-    flex-wrap: nowrap;    
-    justify-content: space-between;  
 }
 
-.icon-button {
+.btn_tornar {
+    color: var(--color-primary);
+    padding: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.menu_top button{
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn_afegir {
+    background: var(--color-primary);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.container_usuaris {
+    width: 100%;
+}
+.usuaris {
+    width: 100%;
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.esquerra {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.esquerra p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.prioritat {
+    text-align: center;
+    padding: 2px 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.p_baixa {
+    background: green;
+}
+.p_moderada {
+    background: yellow;
+}
+
+.p_alta {
+    background: red;
+}
+
+.dreta p{
+    color: var(--color-tertiary);
+}
+
+.dreta {
+    padding: 10px;
+}
+.profile-img {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+.buscador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ocupa el mismo ancho que el contenedor del usuario */
+    position: relative; /* Necesario para posicionar la lupa dentro del input */
+    margin: 10px 0;
+}
+
+.input-buscador {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 8px 10px 8px 40px; /* Espacio para la lupa a la izquierda */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    border: 2px solid black; /* Contorno más negro */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+.btn-lupa {
+    position: absolute;
+    left: 10px; /* Posiciona la lupa a la izquierda dentro del input */
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
-    font-size: 24px; 
-}
-
-.icon-button i {
-    font-size: 24px; 
-}
-
-
-@media (max-width: 600px) {
-    .menu_top {
-        flex-direction: column; 
-        align-items: flex-start; 
-        margin: 0 10px;
-        height: auto; 
-    }
+    padding: 0;
+    color: var(--color-tertiary); /* Ajusta el color de la lupa */
+    font-size: 16px; /* Ajusta el tamaño de la lupa */
 }
