@@ -34,14 +34,6 @@
     cursor: pointer;
 }
 
-.btn_afegir {
-    background: var(--color-primary);
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 10px;
-}
-
 .container_incidencies {
     width: 100%;
 }
@@ -52,6 +44,8 @@
     display: flex;
     align-items: center;
     margin: 10px 0;
+    text-decoration: none;
+    color: var(--color-primary);
 }
 
 .esquerra {
@@ -68,15 +62,17 @@
 
 .prioritat {
     text-align: center;
-    padding: 2px 10px;
-    color: white;
+    padding: 2px 0;
+    width: 62px;
+    border-radius: 5px;
+    color: var(--color-primary);
     font-weight: bold;
 }
 
 .p_baixa {
     background: var(--color-baixes);
 }
-.p_moderada {
+.p_mitjana {
     background: var(--color-moderades);
 }
 .p_alta {
@@ -94,4 +90,123 @@
 .no_incidencies {
     margin-top: 20px;
     color: var(--color-primary);
+}
+
+.contenedor_incidencies form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.form_element {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_element input {
+    padding: 8px 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    color: var(--color-primary);
+}
+.form_element input:focus {
+    outline: none;
+}
+.form_element textarea {
+    padding: 8px 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 2px;
+    color: var(--color-primary);
+}
+.form_element textarea:focus {
+    outline: none;
+}
+
+.form_element label {
+    font-size: 15px;
+    color: var(--color-tertiary);
+}
+
+.form_element select {
+    padding: 8px 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    color: var(--color-primary);
+}
+
+.form_element option {
+    padding: 8px 10px;
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    color: var(--color-primary);
+}
+
+.radio_group {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.radio_group label {
+    font-size: 12px;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.radio_group input[type="radio"] {
+    display: none;
+}
+
+.radio_group label {
+    padding: 10px 20px;
+    border: 2px solid var(--color-primary);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#prioritat_1:checked + label {
+    background-color: var(--color-baixes);
+    color: #fff;
+}
+
+#prioritat_2:checked + label {
+    background-color: var(--color-moderades);
+}
+
+#prioritat_3:checked + label {
+    background-color: var(--color-altes);
+    color: #fff;
+}
+
+#estat_1:checked + label {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+#estat_2:checked + label {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+#estat_3:checked + label {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.form_element button {
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

@@ -21,12 +21,13 @@ class IncidenciaController {
             $this->incidencia->titol = $_POST['titol'];
             $this->incidencia->descripcio = $_POST['descripcio'];
             $this->incidencia->prioritat = $_POST['prioritat'];
-            $this->incidencia->estat = $_POST['estat'];
+            $this->incidencia->estat = "pendent";
             $this->incidencia->id_usuari = $_POST['id_usuari'];
             $this->incidencia->id_tipo_incidencia = $_POST['id_tipo_incidencia'];
+            $this->incidencia->id_usuari_creacio = $_POST['id_usuari_creacio'];
 
             if ($this->incidencia->crear()) {
-                header('Location: ../public/index.php');
+                header('Location: ../public/index.php?action=incidencies');
                 exit();
             } else {
                 echo "<script>alert('Error al crear la incidencia.');</script>";
@@ -36,15 +37,16 @@ class IncidenciaController {
 
     public function actualitzar() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->incidencia->id_incidencia = $_POST['id_incidencia_veure'];
-            $this->incidencia->descripcio = $_POST['descripcio_veure'];
-            $this->incidencia->prioritat = $_POST['prioritat_veure'];
-            $this->incidencia->estat = $_POST['estat_veure'];
-            $this->incidencia->id_tipo_incidencia = $_POST['id_tipo_incidencia_veure'];
-            $this->incidencia->titol = $_POST['titol_veure'];
+            $this->incidencia->id_incidencia = $_POST['id_incidencia'];
+            $this->incidencia->descripcio = $_POST['descripcio'];
+            $this->incidencia->prioritat = $_POST['prioritat'];
+            $this->incidencia->estat = $_POST['estat'];
+            $this->incidencia->id_tipo_incidencia = $_POST['id_tipo_incidencia'];
+            $this->incidencia->id_usuari = $_POST['id_usuari'];
+            $this->incidencia->titol = $_POST['titol'];
             
             if ($this->incidencia->actualitzar()) {
-                header('Location: ../public/index.php');
+                header('Location: ../public/index.php?action=incidencies');
                 exit();
             } else {
                 echo "<script>alert('Error al actualitzar la incidencia.');</script>";
@@ -54,10 +56,10 @@ class IncidenciaController {
 
     public function eliminar() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->incidencia->id_incidencia = $_POST['id_incidencia_veure'];
+            $this->incidencia->id_incidencia = $_POST['id_incidencia'];
 
             if ($this->incidencia->eliminar()) {
-                header('Location: ../public/index.php');
+                header('Location: ../public/index.php?action=incidencies');
                 exit();
             } else {
                 echo "<script>alert('Error al eliminar la incidencia.');</script>";
@@ -96,21 +98,20 @@ if (isset($_REQUEST['action'])) {
     $controller = new IncidenciaController();
 
     switch ($_REQUEST['action']) {
+        case 'incidencies':
+            break;
+        case 'crearIncidencia':
+            break;
+        case 'veureIncidencia':
+            break;
         case 'crear':
-            $controller->obrirCrear();
+            $controller->crear();
             break;
         case 'actualitzar':
             $controller->actualitzar();
             break;
         case 'eliminar':
             $controller->eliminar();
-            break;
-        case 'obtenir_per_id':
-            if (isset($_POST['id'])) {
-                echo json_encode($controller->obtenir_per_id($_POST['id']));
-            }
-            break;
-        case 'incidencies':
             break;
         default:
             echo "<script>alert('Acció no reconeguda.');</script>";

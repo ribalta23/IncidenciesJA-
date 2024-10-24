@@ -10,7 +10,6 @@ switch ($action) {
     case 'login':
         include '../views/login.php';
         break;
-    
     case 'incidencies':
         $title = "Incidencies".$_SESSION['usuari']['nom'];
         $content = "../views/incidencies.php";
@@ -50,6 +49,7 @@ switch ($action) {
             "../public/css/incidencies.css"
         ];
         include '../views/layout.php';
+        break;
     case 'afegirUsuaris':
         $title = "Afegir usuaris";
         $content = "../views/usuaris/afegirusuaris.php";
@@ -57,5 +57,14 @@ switch ($action) {
             "../public/css/incidencies.css"
         ];
         include '../views/layout.php';
+        break;
+    case 'veureIncidencia':
+        $title = "Veure incidencia";
+        $content = "../views/veureincidencia.php";
+        $styles = [
+            "../public/css/incidencies.css"
+        ];
+        include '../views/layout.php';
+        break;
 }
 ?>

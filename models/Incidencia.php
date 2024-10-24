@@ -11,16 +11,17 @@ class Incidencia {
     public $estat;
     public $id_usuari;
     public $id_tipo_incidencia;
+    public $id_usuari_creacio;
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
     public function crear() {
-        $query = "INSERT INTO " . $this->table . " (titol, descripcio, prioritat, estat, data_creacio, id_usuari, id_tipus_incidencia) VALUES (?, ?, ?, ?, NOW(), ?, ?)";
+        $query = "INSERT INTO " . $this->table . " (titol, descripcio, prioritat, estat, data_creacio, id_usuari, id_tipus_incidencia, id_usuari_creacio) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("ssssss", $this->titol, $this->descripcio, $this->prioritat, $this->estat, $this->id_usuari, $this->id_tipo_incidencia);
+        $stmt->bind_param("sssssss", $this->titol, $this->descripcio, $this->prioritat, $this->estat, $this->id_usuari, $this->id_tipo_incidencia, $this->id_usuari_creacio);
         return $stmt->execute();
     }
 
@@ -62,7 +63,11 @@ class Incidencia {
     }
 
     public function obtenir_per_id() {
-        $query = "SELECT i.*, u.nom FROM " . $this->table . " i INNER JOIN usuaris u on u.id_usuari = i.id_usuari WHERE id_incidencia = ?";
+        $query = "SELECT i.*, u.nom as NomAsignat, uc.nom as NomCreacio 
+                  FROM " . $this->table . " i
+                  INNER JOIN usuaris u ON u.id_usuari = i.id_usuari
+                  INNER JOIN usuaris uc ON uc.id_usuari = i.id_usuari_creacio
+                  WHERE i.id_incidencia = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $this->id_incidencia);
         $stmt->execute();

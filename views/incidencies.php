@@ -11,13 +11,13 @@
         </div>
         <div>
             <button>Filtres <i class="fa-solid fa-chevron-down"></i></button>
-            <a class="btn_afegir" href="../public/index.php?action=crearIncidencia"><i class="fa-solid fa-plus"></i></a>
+            <a class="btn_afegir" href="../public/index.php?action=crearIncidencia"><button><i class="fa-solid fa-plus"></i></button></a>
         </div>
     </div>
     <div class="container_incidencies">
         <?php if ($incidencies && $incidencies->num_rows > 0) : ?>
             <?php while ($incidencia = $incidencies->fetch_assoc()) : ?>
-                <div class="incidencia">
+                <a class="incidencia" href="../public/index.php?action=veureIncidencia&idIncidencia=<?= $incidencia['id_incidencia'] ?>">
                     <div class="esquerra">
                         <div class="prioritat p_<?= $incidencia['prioritat'] ?>"><?= $incidencia['prioritat'] ?></div>
                         <p><?= $controller->contadorTasques($incidencia['id_incidencia'])?></p>
@@ -28,7 +28,7 @@
                         <p><?= $incidencia['data_creacio']?></p>
                         <p><?= $incidencia['nom_usuari_supervisor']?></p>
                     </div>
-                </div>
+                </a>
             <?php endwhile; ?>
         <?php else: ?>
             <p class="no_incidencies">No hi ha incidències disponibles.</p>
