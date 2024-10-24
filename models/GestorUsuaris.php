@@ -24,9 +24,9 @@ class GestorUsuaris {
         return $usuaris;
     }
 
-    public function insertarUsuari($nom, $cognoms, $email, $rol, $imatge, $password_hash) {
-        $stmt = $this->conn->prepare("INSERT INTO usuaris (nom, cognoms, email, rol, imatge, password) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $nom, $cognoms, $email, $rol, $imatge, $password_hash);
+    public function insertarUsuari($nom, $cognoms, $email, $rol, $imatge, $password_hash, $tipus_id) {
+        $stmt = $this->conn->prepare("INSERT INTO usuaris (nom, cognoms, email, rol, imatge, contrasenya, id_sector) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssi", $nom, $cognoms, $email, $rol, $imatge, $password_hash, $tipus_id);
 
         if ($stmt->execute()) {
             return true;

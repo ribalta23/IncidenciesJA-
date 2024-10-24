@@ -54,7 +54,7 @@ switch ($action) {
         $title = "Afegir usuaris";
         $content = "../views/usuaris/afegirusuaris.php";
         $styles = [
-            "../public/css/incidencies.css"
+            "../public/css/gestionarusuaris.css"
         ];
         include '../views/layout.php';
 }
